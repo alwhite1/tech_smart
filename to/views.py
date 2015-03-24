@@ -53,28 +53,9 @@ def switch(request, lou_name='lou_name'):
     swit = LOU.objects.get(id=lou_i)
     sw = swit.lou_switch
     port = swit.lou_port
-    kws = ''
     name = swit.lou_name
     switc = Switching()
     result = switc.switch(sw, port)
-    #community_rw = 'private'
-    #community_ro = 'public'
-    #host = '77.121.96.226'
-    #frenq = '36'
-    #on_kws = os.popen("snmpset -v 1 -c " + community_rw + " " + host + " .1.3.6.1.4.1.35128.1.1.3.0 s RC")
-    #time.sleep(5)
-    #fr_set = os.popen("snmpset -v 1 -c " + community_rw + " " + host + " .1.3.6.1.4.1.35128.1.1.6.0 s " + frenq)
-    #fr = netsnmp.Varbind('.1.3.6.1.4.1.35128.1.1.6.0')
-    #rc = netsnmp.Varbind('.1.3.6.1.4.1.35128.1.1.3.0')
-    #time.sleep(5)
-   # get_fr = netsnmp.snmpget(fr, Version=1, DestHost=host, Community=community_ro)
-   # time.sleep(5)
-    #get_rc = netsnmp.snmpget(rc, Version=1, DestHost=host, Community=community_ro)
-   # if get_rc[0] == 'RC':
-    #    kws = "Включен"
-   # else:
-   #     kws = "Включен"
-
     return render_to_response('to_switch.html', {'switch': sw, 'port': port, 'name': name,
                                                  'result': result},
                               context_instance=RequestContext(request))
@@ -84,11 +65,3 @@ def ppr(request):
     return render_to_response('to_ppr.html',
                               context_instance=RequestContext(request))
 
-@login_required
-def get_power_level(request):
-    lv = netsnmp.Varbind('.1.3.6.1.4.1.35128.1.2.1.0')
-    host = '77.121.96.226'
-    community_ro = 'public'
-    get_lv = netsnmp.snmpget(lv, Version=1, DestHost=host, Community=community_ro)
-    return render_to_response('to_get_power_level_1.html',{'get_lv': get_lv[0]},
-                              context_instance=RequestContext(request))
