@@ -1,0 +1,9 @@
+{% extends "to_main_new_1.html" %}
+{% block title %}ТО.Переключение ОК. Центр {% endblock %}
+{% block head %}Техподразделение{% endblock %}
+{% block content %}
+<form action="/to/switch/" method="post">{% csrf_token %}
+{{ form }}
+<input type="submit" value="Переключится" />
+</form>
+{% endblock %}

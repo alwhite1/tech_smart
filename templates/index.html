@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title>Воля. Винницкая Филия.Авторизация</title>
+          <meta charset="utf-8">
+         {% load staticfiles %}
+          <link rel="stylesheet" type="text/css" href="{% static "style_log.css" %}">
+     </head>
+     <body>
+          <div id="header">
+	           Винницкая филия <br>
+		   Техническое подразделение
+		   <div id = "logo">
+		   <img src="http://volia.com/user/img/logo/logo.png" border="0" style="position: absolute; left: 0px; top: 0px;">
+		   </div>
+	  </div>
+           <div id="content">{% block content %}{% endblock %}</div>
+     </body>
+</html>

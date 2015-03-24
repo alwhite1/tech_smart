@@ -1,0 +1,24 @@
+{% extends "stp_main_new_1.html" %}
+{% block title %}СТП. Фиксированные IP. {{ cmts }} {% endblock %}
+{% block head %}Служба технической поддержки{% endblock %}
+{% block content %}<h2> Используемые фиксированные IP адреса на {{ cmts }}:</h2>
+<table>
+    <tr>
+        <th>IP</th>
+		<th>MAC</th>
+		<th>ЛОУ</th>
+		<th>Договор</th>
+		<th>Адрес</th>
+    </tr>
+{%  for id, ip, mac, cmts, lou, contract, adress in ip_base.values_list %}
+    <tr>
+        <td> {{  ip }} </td>
+		<td> {{ mac }}</td>
+		<td>{{ lou }}</td>
+		<td>{{ contract }}</td>
+        <td>{{ adress }}</td>
+    </tr>
+{% endfor %}
+</table>
+    <div id="back"> <p><a href="/stp/realip/">Вернутся</a></p> </div>
+{% endblock %}

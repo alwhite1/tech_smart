@@ -1,0 +1,73 @@
+#header{
+  	/*background:url("http://volia.com/user/img/logo/logo.png")left top no-repeat;*/
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	right top,
+	color-stop(0.23, #5CE093),
+	color-stop(0.88, #FFFF00)
+	);
+	background-image: -o-linear-gradient(right, #5CE093 23%, #FFFF00 88%);
+	background-image: -moz-linear-gradient(right, #5CE093 23%, #FFFF00 88%);
+	background-image: -webkit-linear-gradient(right, #5CE093 23%, #FFFF00 88%);
+	background-image: -ms-linear-gradient(right, #5CE093 23%, #FFFF00 88%);
+	background-image: linear-gradient(to right, #5CE093 23%, #FFFF00 88%);
+  	height:100px;
+	position:absolute;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+
+  	font-family: arial, helvetica, sans-serif;
+	color: green;
+	font-size: 2em;
+	margin: 0;
+    text-align: center;
+
+	padding: 0.25em;
+	font-style: bold;
+	text-align: center;
+  	}
+#content{
+
+	font-family: arial, helvetica, sans-serif;
+	font-style: italic;
+	color: green;
+	background:#5CE093;
+	position:absolute;
+	left:0px;
+	top:115px;
+	bottom:0px;
+	right:0px;
+	}
+table, th, td
+{
+    background-color: beige;
+    border: 2px solid darkgreen;
+    color:black;
+
+}
+
+th
+{
+
+height:35px;
+background-color:lightgrey;
+color:black;
+border-color:black;
+}
+
+input[type="submit"]  {
+     align-items: center;
+	 border: 1px solid black;
+     border-radius: 6px;
+	 font-family: arial, helvetica, sans-serif;
+	 font-style: italic;
+	 background: greenyellow;
+
+
+	 }
+p{
+    text-align:  center;
+    color: black;
+}
