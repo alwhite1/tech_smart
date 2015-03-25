@@ -1,7 +1,6 @@
 from django.contrib import admin
 from stp.models import RealIp
+from stp.models import  Wiki
 
 admin.site.register(RealIp)
-
-
-# Register your models here.
+admin.site.register(Wiki)

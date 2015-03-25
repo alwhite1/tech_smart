@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
-from to.form import LOUFormsCen,LOUFormsVish,LOUFormsZam
+from to.form import LOUFormsCen, LOUFormsVish, LOUFormsZam
 from to.models import LOU
 from django.template import RequestContext
-from to.switching import SwithToUs, SwichToPort, Switching
+from to.switching import Switching
 from django.contrib.auth.decorators import login_required
-import os
-import netsnmp
-import time
 
 @login_required
 def main(request):

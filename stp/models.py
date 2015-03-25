@@ -14,3 +14,14 @@ class RealIp(models.Model):
 
     def __unicode__(self):
         return self.realip_ip
+
+
+class Wiki(models.Model):
+    name = models.CharField(max_length=255, primary_key=True)
+    content = models.TextField(max_length=10000, blank=True)
+
+    def __unicode__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return "/blog/%i/" % self.id

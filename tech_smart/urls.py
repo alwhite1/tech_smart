@@ -4,9 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'tech_smart.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+
 
     url(r'^$', 'tech_smart.views.main'),
     url(r'^admin/', include(admin.site.urls)),
@@ -15,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^stp/', include('stp.urls')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login'),
-
+    url('^markdown/', include( 'django_markdown.urls')),
 
 )
 urlpatterns += staticfiles_urlpatterns()

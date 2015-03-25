@@ -1,0 +1,8 @@
+{% extends "stp_main_new_1.html" %}
+{% block title %}СТП. Вики {% endblock %}
+{% block head %}Служба технической поддержки{% endblock %}
+{% block content %}
+    {% for page in pages %}
+        <a href="/stp/wiki/{{ page.name }}/"><br>{{ page.name }}</a>
+    {% endfor %}
+{% endblock %}
