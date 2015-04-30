@@ -9,7 +9,7 @@ import markdown
 
 @login_required
 def main(request):
-    return render_to_response('stp_main_new_1.html',
+    return render_to_response('stp_main.html',
                               context_instance=RequestContext(request))
 
 @login_required
@@ -56,7 +56,7 @@ def view_page(request, page_name):
     except Wiki.DoesNotExist:
         return render_to_response("stp_wiki_create.html", {"page_name": page_name})
     content = page.content
-    return render_to_response("stp_wiki_view.html", {"page_name": page_name, "content": markdown.markdown(content)})
+    return render_to_response("stp_wiki_view.html", {"page_name": page_name, "content": content})
 
 @login_required
 @csrf_exempt

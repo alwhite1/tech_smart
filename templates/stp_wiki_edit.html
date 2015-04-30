@@ -3,7 +3,7 @@
 {% block head %}Служба технической поддержки{% endblock %}
 {% block content %}<h1> Редактирование {{ page_name }}  </h1>
     <form method="post" action="/stp/wiki/{{ page_name }}/save/"> {% csrf_token %}
-        <textarea name="content" rows="20" cols="60"> {{ content }}</textarea>
+        <textarea name="content" rows="20" cols="60" wrap="physical"> {{ content }}</textarea>
      <br/>
         <input type="submit" value="Сохранить">
     </form>

@@ -1135,7 +1135,7 @@ class Switching():
         if error:
             message = error
         else:
-            message = 'Выполнено переключение на коммутатор №  ' + str(switch) + ' и порт №  ' + str(port)
+            message = 'Выполнено переключение на ' + str(port) + ' порт ' + '  коммутатора №  ' + str(switch)
 
         return message
 

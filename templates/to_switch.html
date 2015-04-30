@@ -1,17 +1,14 @@
 {% extends "to_main_new_1.html" %}
-{% block title %}ТО.Переключение ОК {% endblock %}
+{% block title %}ТО. Переключение ОК {% endblock %}
 {% block head %}Техподразделение{% endblock %}
 {% block content %}
     <hr>
      <h3>Параметры ЛОУ {{name}}:</h3>
     <p>Номер коммутатора: {{ switch }} </p>
 	<p>Номер порта: {{port}} </p>
-    <hr>
+
     <h3>Выполняется переключение на ЛОУ:</h3>
     <p> {{name}} </p>
-    <p>  </p>
-     <h3>{{ result }}</h3>
-     <hr>
+    <h3>{{ result }}</h3>
        <div id="back"> <p><a href="/to/us_switch/">Вернутся</a></p> </div>
-    <hr>
  {% endblock %}

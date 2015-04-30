@@ -5,7 +5,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-
     url(r'^$', 'tech_smart.views.main'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^main/', 'tech_smart.views.main'),
@@ -13,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^stp/', include('stp.urls')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login'),
-    url('^markdown/', include( 'django_markdown.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
 
 )
 urlpatterns += staticfiles_urlpatterns()

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def main(request):
-    return render_to_response('main_new_1.html',
+    return render_to_response('main.html',
                               context_instance=RequestContext(request))
 
 @login_required

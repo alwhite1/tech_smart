@@ -1,8 +1,11 @@
 {% extends "stp_main_new_1.html" %}
 {% block title %}СТП. Вики. {{ page_name }}{% endblock %}
 {% block head %}Служба технической поддержки{% endblock %}
-{% block content %}<h1>  {{ page_name }}  </h1>
+{% block content %}
+    {% autoescape off %}
+    <h1>  {{ page_name }}  </h1>
     {{ content }}
     <hr/>
     <a href="/stp/wiki/{{ page_name }}/edit">Редактировать?</a>
+     {% endautoescape %}
 {% endblock %}
