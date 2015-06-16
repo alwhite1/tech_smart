@@ -1,5 +1,5 @@
 """
-Django settings for djang_tech_smart project.
+Django settings for tech_smart project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -88,7 +88,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = os.path.join(BASE_DIR, "collected_static")
 MEDIA_URL = '/media/'
 TEMPLATE_DIRS = (

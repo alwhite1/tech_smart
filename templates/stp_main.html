@@ -1,8 +1,64 @@
-{% extends "stp_main_new_1.html" %}
-{% block title %}СТП. Главная {% endblock %}
-{% block head %}Служба технической поддержки{% endblock %}
-{% block content %}<h1> Служба технической поддержки. </h1>
-<p> <h3> Колибабчук Петр Павлович.<img src="/static/images/petr.kolibabchyk.JPG" height="100" width="90" border="1" align="right"></h3> Инженер головной станции.<br>Почта: petro.kolibabchuk@volia.com <br>Телефон: +38(050)3841958 </p>
-<p> <h3> Дубин Дмитрий Георгиевич.<img src="/static/images/dmitriy_dubin.jpg" height="100" width="90" border="1" align="right"></h3> Инженер транспортной сети. <br>Почта: dmytro.dubin@volia.com <br>Телефон: +38(050)3842023  </p>
-<p> <h3> Беляев Александр Николаевич.<img src="/static/images/alexandr_belyaev.jpg" height="100" width="90" border="1" align="right"></h3> Инженер транспортной сети.<br>Почта: oleksandr.bieliaiev@volia.com <br>Телефон: +38(050)3841825 </p>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta charset=UTF-8" />
+<meta name="author" content="Alexandr Belyaev" />
+<meta name="description" content="Volia. Vinnitsa. Tech Department" />
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css"  href="{% static "style.css" %}" >
+</head>
+<body>
+<div id="wrap">
+<div id = "Volia">
+     <img src="http://volia.com/user/img/logo/logo.png" >
+</div>
+		<div id="header">
+
+			<h1 id="logo"><span class="gray">Винницкий филиал</span></h1>
+			<h2 id="slogan">Техническое подразделение</h2>
+			 <div id="userauth">
+				{% if user.is_authenticated %}
+				Вы вошли как {{ user.username }} <br> [{{ user.first_name }} {{ user.last_name }}]. <a href="/accounts/logout/?next=/accounts/login/?next=/main/"><br>Выход</a>
+				{% else %}Вы не вошли в систему. <a href="/accounts/login/?next={{ request.path }}" >Войти</a>
+				{% endif %}
+			 </div>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="/main/"><span>Главная</span></a></li>
+				<li><a href="/stp/main"><span>СТП</span></a></li>
+				<li><a href="/to/main/"><span>ТО</span></a></li>
+                <li><a href="/admin/"><span>Админка</span></a></li>
+			</ul>
+		</div>
+		<div id="content-wrap">
+
+			<div id="main">
+
+			   <a name="TemplateInfo"></a>
+               <div id="content">{% block content %}{% endblock %}</div>
+
+
+			</div>
+		<div id="sidebar">
+					<h1>СТП</h1>
+                    <ul class="sidemenu">
+                        <li><a href="/stp/realip/">Фиксированные IP</a></li>
+                        <li><a href="/stp/subnet/">Подсети</a></li>
+                        <li><a href="/stp/wiki/">Вики</a></li>
+                    </ul>
+
+								</div>
+
+		</div>
+		<div id="footer">
+
+			<p>
+			&copy;2015 <a href="http://volia.com/ukr/">Воля</a>  Design by Alexandr Belyaev.
+			</p>
+
+		</div>
+</div>
+</body>
+</html>

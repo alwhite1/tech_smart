@@ -22,7 +22,6 @@ class Wiki(models.Model):
 
     name = models.CharField(max_length=255, primary_key=True)
     content = tinymce_model.HTMLField(max_length=10000, blank=True)
-    #content = models.TextField(editable=False)
 
     def __unicode__(self):
         return self.name

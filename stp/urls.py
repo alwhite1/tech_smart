@@ -13,8 +13,6 @@ urlpatterns = patterns('',
                        url(r'^realip/all/', 'stp.views.realip'),
                        url(r'^subnet/', 'stp.views.subnet'),
                        url(r'^wiki/$', 'stp.views.wiki'),
-                       url(r'^wiki/(?P<page_name>[^/]+)/edit/$', 'stp.views.edit_page'),
-                       url(r'^wiki/(?P<page_name>[^/]+)/save/$', 'stp.views.save_page'),
                        url(r'^wiki/(?P<page_name>[^/]+)/$', 'stp.views.view_page'),
                        )
 urlpatterns += staticfiles_urlpatterns()

@@ -1,11 +1,81 @@
-{% extends "main_new_1.html" %}
-{% block title %}ТП. Главная {% endblock %}
-{% block head %}Техподразделение{% endblock %}
-{% block content %}<h1> Техническое подразделение </h1>
-<p> <h3> Герасимчук Владимир Николаевич.<img src="/static/images/vladimir_gerasimchyk.jpg" height="100" width="80" border="1" align="right"></h3> Главный инженер.<br>Почта: volodymyr.herasymchuk@volia.com <br>Телефон: +380(50)3841815 </p>
-<p> <h3> Отделы:</h3>
-Служба технической поддержки.<br>
-Служба технической поддержки интернет.<br>
-ТО ВОЛС.<br>
-Отдел технического обслуживания.</p>
-{% endblock %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>{% block title %}{% endblock %}</title>
+
+<meta charset=UTF-8" />
+<meta name="author" content="Alexandr Belyaev" />
+<meta name="description" content="Volia. Vinnitsa. Tech Department" />
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css"  href="{% static "style.css" %}" >
+
+</head>
+
+<body>
+<div id="wrap">
+<div id = "Volia">
+     <img src="http://volia.com/user/img/logo/logo.png" >
+</div>
+		<div id="header">
+
+			<h1 id="logo"><span class="gray">Винницкий филиал</span></h1>
+			<h2 id="slogan">Техническое подразделение</h2>
+			 <div id="userauth">
+				{% if user.is_authenticated %}
+				Вы вошли как {{ user.username }} <br> [{{ user.first_name }} {{ user.last_name }}]. <a href="/accounts/logout/?next=/accounts/login/?next=/main/"><br>Выход</a>
+				{% else %}Вы не вошли в систему. <a href="/accounts/login/?next={{ request.path }}" >Войти</a>
+				{% endif %}
+			 </div>
+		</div>
+
+		<div id="menu">
+			<ul>
+				<li><a href="/main/"><span>Главная</span></a></li>
+				<li><a href="/stp/main"><span>СТП</span></a></li>
+				<li><a href="/to/main/"><span>ТО</span></a></li>
+                <li><a href="/admin/"><span>Админка</span></a></li>
+			</ul>
+		</div>
+
+		<div id="content-wrap">
+
+			<div id="main">
+
+			   <a name="TemplateInfo"></a>
+				{% block content %}{% endblock %}
+
+
+			</div>
+            <div id="sidebar">
+
+					<h1>ТО</h1>
+					<ul class="sidemenu">
+						<li><a href="/to/us_switch/">Коммутатор обратных каналов</a></li>
+						<li><a href="/to/ppr/">ЛОУ ПГС</a></li>
+					</ul>
+
+					<h1>СТП</h1>
+                    <ul class="sidemenu">
+                        <li><a href="/stp/realip/">Фиксированные IP</a></li>
+                        <li><a href="/stp/subnet/">Подсети</a></li>
+                        <li><a href="/stp/wiki/">Вики</a></li>
+                    </ul>
+
+								</div>
+
+		</div>
+
+		<div id="footer">
+
+			<p>
+			&copy;2015 <a href="http://volia.com/ukr/">Воля</a>  Design by Alexandr Belyaev.
+			</p>
+
+		</div>
+</div>
+
+</body>
+</html>

@@ -5,10 +5,7 @@
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql:///django_tech_smart</jdbc-url>
-      <user-name>root</user-name>
-      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-

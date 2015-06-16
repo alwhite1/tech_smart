@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def main(request):
-    return render_to_response('to_main.html',
+    return render_to_response('to_main_data.html',
                               context_instance=RequestContext(request))
 
 def us_switch(request):
