@@ -1,9 +1,34 @@
 {% extends "to_main.html" %}
 {% block title %}ТО. Главная {% endblock %}
 {% block head %}Техподразделение{% endblock %}
-{% block content %}<h1> Технический отдел </h1>
-<p> <h3> Литвин Сергей Николаевич.</h3> Мастер участка ТО.<br>Почта: serhii.lytvyn@volia.com <br>Телефон: +38(050)3828741 </p>
-<p> <h3> Хитрич Сергей.</h3> Инженер ВОЛС.<br>Почта: serhii.khytrych@volia.com <br>Телефон: +38(050)3828749 </p>
-<p> <h3> Бесараб Тарас.</h3> Ведущий инженер СТПИ.<br>Почта: taras.besarab@volia.com <br>Телефон(личный): +38(093)7877574 </p>
-<p> <h3> Прокопчук Олег.</h3> Инженер СТПИ.<br>Почта: taras.besarab@volia.com <br>Телефон(личный): +38(093)7877574 </p>
+{% block content %}
+    <h1> Служба технического обслуживания </h1>
+    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_sto.values_list %}
+    <h3> {{  name }} </h3>
+		{{ position }}
+		<br> Почта: {{ mail }}
+		<br> Телефон: {{ phone_number }}
+    {% endfor %}
+    <h1> Служба технической поддержки интернет. </h1>
+    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_stpi.values_list %}
+    <h3> {{  name }} </h3>
+		{{ position }}
+		<br> Почта: {{ mail }}
+		<br> Телефон: {{ phone_number }}
+    {% endfor %}
+    <h1> Служба технического обслуживания ВОЛС. </h1>
+    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_stovols.values_list %}
+    <h3> {{  name }} </h3>
+		{{ position }}
+		<br> Почта: {{ mail }}
+		<br> Телефон: {{ phone_number }}
+    {% endfor %}
+    <h1> Производствено-техническая служба. </h1>
+    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_pts.values_list %}
+    <h3> {{  name }} </h3>
+		{{ position }}
+		<br> Почта: {{ mail }}
+		<br> Телефон: {{ phone_number }}
+    {% endfor %}
+
 {% endblock %}

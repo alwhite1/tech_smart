@@ -2,10 +2,17 @@
 {% block title %}ТП. Главная {% endblock %}
 {% block head %}Техподразделение{% endblock %}
 {% block content %}<h1> Техническое подразделение </h1>
-<p> <h3> Герасимчук Владимир Николаевич.<img src="/static/images/vladimir_gerasimchyk.jpg" height="100" width="80" border="1" align="right"></h3> Главный инженер.<br>Почта: volodymyr.herasymchuk@volia.com <br>Телефон: +380(50)3841815 </p>
-<p> <h3> Отделы:</h3>
-Служба технической поддержки.<br>
+    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff.values_list %}
+        <h3> {{  name }} </h3>
+		{{ position }}
+		<br> Почта: {{ mail }}
+		<br> Телефон: {{ phone_number }}
+    {% endfor %}
+
+<p> <h3> Службы:</h3>
+Служба поддержки сети.<br>
 Служба технической поддержки интернет.<br>
-ТО ВОЛС.<br>
-Отдел технического обслуживания.</p>
+Служба технического обслуживания ВОЛС.<br>
+Служба технического обслуживания.<br>
+Производствено-техническая служба.<br>
 {% endblock %}

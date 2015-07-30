@@ -5,10 +5,16 @@ from to.models import LOU
 from django.template import RequestContext
 from to.switching import Switching
 from django.contrib.auth.decorators import login_required
+from to.models import Staffer
 
 @login_required
 def main(request):
-    return render_to_response('to_main_data.html',
+    staff_sto = Staffer.objects.filter(staffer_department='Служба технического обслуживания')
+    staff_stpi = Staffer.objects.filter(staffer_department='Служба технической поддержки интернет')
+    staff_pts = Staffer.objects.filter(staffer_department='Производствено-техническая служба')
+    staff_stovols = Staffer.objects.filter(staffer_department='Служба технического обслуживания ВОЛС')
+    return render_to_response('to_main_data.html', {'staff_sto': staff_sto, 'staff_stpi': staff_stpi,
+                                                    'staff_pts': staff_pts, 'staff_stovols': staff_stovols},
                               context_instance=RequestContext(request))
 
 def us_switch(request):
@@ -62,3 +68,7 @@ def ppr(request):
     return render_to_response('to_ppr.html',
                               context_instance=RequestContext(request))
 
+@login_required
+def e2e(request):
+    return render_to_response('to_e2e.html',
+                              context_instance=RequestContext(request))
