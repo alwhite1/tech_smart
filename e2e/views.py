@@ -6,13 +6,44 @@ from e2e.models import E2E
 from e2e.models import CrashReport
 from e2e.models import ReportInformation
 from e2e.e2e import change_time
-from  e2e.e2e import time_period,compare_time
+from e2e.e2e import time_period
 from django.template import RequestContext
+import datetime
 
 @login_required
 def main(request):
     return render_to_response('e2e_main_data.html',
                               context_instance=RequestContext(request))
+@login_required
+def report(request):
+    current_year = datetime.date.today().year
+    current_month = datetime.date.today().month
+    dict_month = {1: "Январь", 2: "Февраль", 3: "Март", 4: "Апрель", 5: "Май", 6: "Июнь", 7: "Июль", 8: "Август",
+                  9: "Сентябрь", 10: "Октябрь", 11: "Ноябрь", 12: "Декабрь"}
+    year_list = []
+    status1 =[]
+
+    state_all = []
+    report = ReportInformation.objects.all()
+    for year in range(2015, current_year + 1):
+        year_list.append(year)
+    for key, val in dict_month.items():
+        state_month = []
+        state_month.append(val)
+        for year in year_list:
+            date = str(key) + "." + str(year)
+            status = report.filter(MONTH=date).values('STATUS')
+            status1.append(status)
+            state = "Создание отчета невозможно"
+            if status:
+                state = "Очет создан"
+            if not status:
+                state = " Отчет еще не создан "
+            state_month.append(state)
+        state_all.append(state_month)
+    return render_to_response('e2e_report.html', {'state_all': state_all, "year_list": year_list, 'status1': status1
+                                                  })
+
 
 @login_required
 def generate_month_report(request, month):
