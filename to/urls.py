@@ -13,6 +13,6 @@ urlpatterns = patterns('',
                        url(r'^us_switch_zamostie/', 'to.views.zamostie'),
                        url(r'^switch/$', 'to.views.switch'),
                        url(r'^ppr/', 'to.views.ppr'),
-                       url(r'^icsat/', 'to.views.e2e'),
+
                                               )
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,9 @@
+{% extends "to_main.html" %}
+{% block title %}ТО.E2E {% endblock %}
+{% block head %}Техподразделение{% endblock %}
+{% block content %}
+<h1> Отчет успешно создан. </h1>
+<br> За месяц произошло: {{ crash_number }} аварий
+<br> Количество пострадавших RGU: {{ affective_number }}
+<br> Доступность услуг: {{ e2e }}
+{% endblock %}

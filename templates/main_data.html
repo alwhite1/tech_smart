@@ -2,7 +2,7 @@
 {% block title %}ТП. Главная {% endblock %}
 {% block head %}Техподразделение{% endblock %}
 {% block content %}<h1> Техническое подразделение </h1>
-    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff.values_list %}
+    {%  for id, name, department, position, mail, phone_number in staff.values_list %}
         <h3> {{  name }} </h3>
 		{{ position }}
 		<br> Почта: {{ mail }}

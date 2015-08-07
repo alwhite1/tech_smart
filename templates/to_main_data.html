@@ -3,28 +3,28 @@
 {% block head %}Техподразделение{% endblock %}
 {% block content %}
     <h1> Служба технического обслуживания </h1>
-    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_sto.values_list %}
+    {%  for id, name, department, position, mail, phone_number in staff_sto.values_list %}
     <h3> {{  name }} </h3>
 		{{ position }}
 		<br> Почта: {{ mail }}
 		<br> Телефон: {{ phone_number }}
     {% endfor %}
     <h1> Служба технической поддержки интернет. </h1>
-    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_stpi.values_list %}
+    {%  for id, name, department, position, mail, phone_number in staff_stpi.values_list %}
     <h3> {{  name }} </h3>
 		{{ position }}
 		<br> Почта: {{ mail }}
 		<br> Телефон: {{ phone_number }}
     {% endfor %}
     <h1> Служба технического обслуживания ВОЛС. </h1>
-    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_stovols.values_list %}
+    {%  for id, name, department, position, mail, phone_number in staff_stovols.values_list %}
     <h3> {{  name }} </h3>
 		{{ position }}
 		<br> Почта: {{ mail }}
 		<br> Телефон: {{ phone_number }}
     {% endfor %}
     <h1> Производствено-техническая служба. </h1>
-    {%  for id, name, department, position, mail, phone_number,sdasd,asdasd in staff_pts.values_list %}
+    {%  for id, name, department, position, mail, phone_number in staff_pts.values_list %}
     <h3> {{  name }} </h3>
 		{{ position }}
 		<br> Почта: {{ mail }}

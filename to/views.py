@@ -7,6 +7,7 @@ from to.switching import Switching
 from django.contrib.auth.decorators import login_required
 from to.models import Staffer
 
+
 @login_required
 def main(request):
     staff_sto = Staffer.objects.filter(staffer_department='Служба технического обслуживания')
@@ -68,7 +69,4 @@ def ppr(request):
     return render_to_response('to_ppr.html',
                               context_instance=RequestContext(request))
 
-@login_required
-def e2e(request):
-    return render_to_response('to_e2e.html',
-                              context_instance=RequestContext(request))
+

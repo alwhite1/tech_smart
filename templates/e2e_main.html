@@ -31,6 +31,7 @@
 				<li><a href="/to/main/"><span>ТО</span></a></li>
                 <li><a href="/e2e/main/"><span>E2E</span></a></li>
                 <li><a href="/admin/"><span>Админка</span></a></li>
+
 			</ul>
 		</div>
 		<div id="content-wrap">
@@ -38,19 +39,16 @@
 			<div id="main">
 
 			   <a name="TemplateInfo"></a>
-               <div id="content">{% block content %}{% endblock %}</div>
-
-
+				<div id="content">{% block content %}{% endblock %}</div>
 			</div>
 		<div id="sidebar">
-					<h1>СПС</h1>
-                    <ul class="sidemenu">
-                        <li><a href="/stp/realip/">Фиксированные IP</a></li>
-                        <li><a href="/stp/subnet/">Подсети</a></li>
-                        <li><a href="/stp/wiki/">Вики</a></li>
-                    </ul>
-
-								</div>
+					<h1>ТО</h1>
+					<ul class="sidemenu">
+						<li><a href="/e2e/generate_report/">Создать месячный отчет</a></li>
+						<li><a href="/e2e/month_report/">Помесячный отчет</a></li>
+                        <li><a href="/e2e/quarter_report/">Поквартальный отчет </a></li>
+					</ul>
+		</div>
 
 		</div>
 		<div id="footer">
