@@ -24,7 +24,7 @@ def report(request):
     status1 =[]
 
     state_all = []
-    report = ReportInformation.objects.all()
+    month_report_all = ReportInformation.objects.all()
     for year in range(2015, current_year + 1):
         year_list.append(year)
     for key, val in dict_month.items():
@@ -32,14 +32,19 @@ def report(request):
         state_month.append(val)
         for year in year_list:
             date = str(key) + "." + str(year)
-            status = report.filter(MONTH=date).values('STATUS')
-            status1.append(status)
+            month_report=month_report_all,filter(MONTH=date)
+            if month_report.exist():
+                for crash_report in month_report:
+                    status = crash_report.STATUS
+                    status1.append(status)
+                if status:
+                    state = "Очет создан"
+                if not status:
+                    state = " Отчет еще не создан "
+
+        if not month_report.exist():
             state = "Создание отчета невозможно"
-            if status:
-                state = "Очет создан"
-            if not status:
-                state = " Отчет еще не создан "
-            state_month.append(state)
+        state_month.append(state)
         state_all.append(state_month)
     return render_to_response('e2e_report.html', {'state_all': state_all, "year_list": year_list, 'status1': status1
                                                   })
