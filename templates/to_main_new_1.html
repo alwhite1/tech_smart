@@ -6,7 +6,7 @@
 <meta name="author" content="Alexandr Belyaev" />
 <meta name="description" content="Volia. Vinnitsa. Tech Department" />
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css"  href="{% static "style_new.css" %}" >
+<link rel="stylesheet" type="text/css"  href="{% static "style.css" %}" >
 </head>
 <body>
 <div id="wrap">
@@ -26,9 +26,11 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li id="current"><a href="/main/"><span>Главная</span></a></li>
-				<li><a href="/stp/main"><span>СТП</span></a></li>
+				<li><a href="/main/"><span>Главная</span></a></li>
+				<li><a href="/stp/main"><span>СПС</span></a></li>
 				<li><a href="/to/main/"><span>ТО</span></a></li>
+                <li><a href="/e2e/main/"><span>E2E</span></a></li>
+                <li><a href="/admin/"><span>Админка</span></a></li>
 
 			</ul>
 		</div>
@@ -42,8 +44,9 @@
 		<div id="sidebar">
 					<h1>ТО</h1>
 					<ul class="sidemenu">
-						<li><a href="/to/us_switch/">Коммутатор обратных каналов</a></li>
-						<li><a href="/to/ppr/">ЛОУ ПГС</a></li>
+						<li><a href="/e2e/report/">Создать месячный отчет</a></li>
+						<li><a href="/e2e/month_report/">Помесячный отчет</a></li>
+                        <li><a href="/e2e/quarter_report/">Поквартальный отчет </a></li>
 					</ul>
 		</div>
 

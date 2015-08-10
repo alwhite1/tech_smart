@@ -1,0 +1,28 @@
+{% extends "e2e_main.html" %}
+{% block title %}E2E. Создание отчета. {% endblock %}
+{% block head %}Техподразделение{% endblock %}
+{% block content %}
+    <h3>По месячные отчеты</h3>
+    <table>
+    <tr>
+
+     <th> &nbsp; </th>
+      {%  for year in year_list %}
+          <th>{{ year }}</th>
+      {% endfor %}
+    </tr>
+    <tr>
+     {%  for list in state_all %}
+         {% for month, status in list %}
+             <td> {{ month }}</td>
+             <td> {{ status }}</td>
+         {% endfor %}
+     {% endfor %}
+    </tr>
+
+
+    </table>
+ <h3> Status1:
+   {{ status1 }}
+
+{% endblock %}
