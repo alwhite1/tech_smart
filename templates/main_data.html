@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block title %}ТП. Главная {% endblock %}
+{% block head %}Техподразделение{% endblock %}
+{% block content %}<h1> Техническое подразделение </h1>
+    {%  for id, name, department, position, mail, phone_number in staff.values_list %}
+        <h3> {{  name }} </h3>
+		{{ position }}
+		<br> Почта: {{ mail }}
+		<br> Телефон: {{ phone_number }}
+    {% endfor %}
+
+<p> <h3> Службы:</h3>
+Служба поддержки сети.<br>
+Служба технической поддержки интернет.<br>
+Служба технического обслуживания ВОЛС.<br>
+Служба технического обслуживания.<br>
+Производствено-техническая служба.<br>
+{% endblock %}

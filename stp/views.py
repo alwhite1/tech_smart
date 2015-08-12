@@ -1,15 +1,15 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from stp.models import RealIp
 from django.template import RequestContext
 from stp.models import Wiki
-from django.http import HttpResponseRedirect
-from django.views.decorators.csrf import csrf_exempt
-import markdown
+from to.models import Staffer
 
 @login_required
 def main(request):
-    return render_to_response('stp_main.html',
+    staff = Staffer.objects.filter(staffer_department='Служба поддержки сети')
+    return render_to_response('stp_main_data.html', {'staff': staff},
                               context_instance=RequestContext(request))
 
 @login_required
@@ -54,27 +54,7 @@ def view_page(request, page_name):
     try:
         page = Wiki.objects.get(pk=page_name)
     except Wiki.DoesNotExist:
-        return render_to_response("stp_wiki_create.html", {"page_name": page_name})
+        return render_to_response("stp_wiki_DoesNotExist.html", {"page_name": page_name})
     content = page.content
     return render_to_response("stp_wiki_view.html", {"page_name": page_name, "content": content})
 
-@login_required
-@csrf_exempt
-def save_page(request, page_name):
-    content = request.POST["content"]
-    try:
-        page = Wiki.objects.get(pk=page_name)
-        page.content = content
-    except Wiki.DoesNotExist:
-        page = Wiki(name=page_name, content=content)
-    page.save()
-    return HttpResponseRedirect("/stp/wiki/" + page_name + "/")
-
-@login_required
-def edit_page(request, page_name):
-    try:
-        page = Wiki.objects.get(pk=page_name)
-        content = page.content
-    except Wiki.DoesNotExist:
-        content = ""
-    return render_to_response("stp_wiki_edit.html", {"page_name": page_name,"content": content})

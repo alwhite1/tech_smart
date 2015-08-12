@@ -1,5 +1,6 @@
 from django.db import models
-from tinymce import models as tinymce_model
+
+# from tinymce import models as tinymce_model
 
 
 class LOU(models.Model):
@@ -23,11 +24,29 @@ class Staffer(models.Model):
     class Meta():
         db_table = 'Staffer'
 
-    staffer_name = tinymce_model.HTMLField(max_length=64)
-    staffer_position = tinymce_model.HTMLField(max_length=64)
-    staffer_email = tinymce_model.HTMLField(max_length=32)
-    staffer_phone = tinymce_model.HTMLField(max_length=32)
+    staffer_name = models.CharField(max_length=64)
+    staffer_department = models.CharField(max_length=64)
+    staffer_position = models.CharField(max_length=64)
+    staffer_email = models.CharField(max_length=32)
+    staffer_phone = models.CharField(max_length=32)
 
     def __unicode__(self):
         return self.staffer_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

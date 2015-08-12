@@ -8,7 +8,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        url(r'^main/', 'e2e.views.main'),
-                       url(r'^report/', 'e2e.views.report'),
                        )
 
 urlpatterns += staticfiles_urlpatterns()
