@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+from models import CrashReport
 
 def change_time(time):
     time_in_minute = 0
     time_list = time.split(" ")
-    if len(a) == 4:
+    if len(time_list) == 4:
         time_in_minute = int(time_list[0])*60 + int(time_list[2])
     if len(time_list) == 2:
-        if a[1] == "hours":
+        if time_list[1] == "hours":
             time_in_minute = int(time_list[0])*60
-        if a[1] == "minutes":
-            time_in_minute = int(tim_list[0])
+        if time_list[1] == "minutes":
+            time_in_minute = int(time_list[0])
     return time_in_minute
 
 def compare_time(time_start, time_end):
@@ -82,14 +83,48 @@ def time_period(time_start, time_end):
 
     return time_in_business_time, time_not_in_business_time, time_all
 
+def get_month_report(month, year):
+    month_year = str(month) + "." + str(year)
+    effect = 100
+    effect_in_business = 100
+    effect_not_in_business = 100
+    report = CrashReport.objects.filter(MONTH=month_year)
+    report_array = []
+    if report.exists():
+        for record in report:
+            effect -= record.EFFECT
+            effect_in_business -= record.EFFECT_IN_BUSINESS
+            effect_not_in_business -= record.EFFECT_NOT_IN_BUSINESS
+        report_array.append(effect_not_in_business)
+        report_array.append(effect_in_business)
+        report_array.append(effect)
+        report_array.append(year)
+        report_array.append(month)
+        report_array.append(month_year)
+    else:
+        for iterr in range(1, 5):
+            report_array.append('Нет данных')
+    return report_array
 
-c = time_period("02.06.2015 21:00:00", "09.06.2015 21:00:00")
-print c
-c = time_period("02.06.2015 23:59:00", "03.06.2015 00:01:00")
-print c
-c = time_period("02.06.2015 07:59:00", "02.06.2015 08:01:00")
-print c
-c = time_period("02.06.2015 22:59:00", "02.06.2015 23:01:00")
-print c
-
+def make_table():
+    current_year = datetime.date.today().year
+    current_month = datetime.date.today().month
+    summary = []
+    year_list = []
+    for year in range(2015, current_year + 1):
+        year_list.append(year)
+    for year in year_list:
+        if year == 2015 and current_year == 2015:
+            for month in range(4, current_month + 1):
+                summary.append(get_month_report(month, year))
+        if year == 2015 and current_year != 2015:
+            for month in range(4, 13):
+                summary.append(get_month_report(month, year))
+        if year != 2015 and current_year == year:
+            for month in range(1, current_month + 1):
+                summary.append(get_month_report(month, year))
+        else:
+            for month in range(1, 13):
+                summary.append(get_month_report(month, year))
+    return summary
 
