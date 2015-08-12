@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css"  href="{% static "style.css" %}" >
+{% block content %}
+    <br>
+    <h1> Подробный отчет за {{ month_year }}:  </h1>
+    <br>
+    <div id="back"> <p><a href="/e2e/month_report/">"Вернутся к месячным отчетам"</a></p> </div>
+    <br>
+<table>
+    <tr>
+        <th>Номер аварии</th>
+		<th>Дата</th>
+		<th>Дата начала аварии</th>
+		<th>Дата устранения аварии</th>
+		<th>Длительность</th>
+		<th>Причина аварии</th>
+        <th>Описание аварии</th>
+        <th>Влияние на доступность услуг</th>
+        <th>Влияние на доступность услуг в бизнес время</th>
+        <th>Влияние на доступность услуг не в бизнес время</th>
+    </tr>
+    {%  for id,crash_code,date,date_begin,data_over,crash_interval,time_in,time_not,reason,description, number, effect, effect_in_business, effect_not_in_business, month in crash_report.values_list %}
+    <tr>
+        <td>{{ crash_code }}</td>
+		<td>{{ date }}</td>
+		<td>{{ date_begin }}</td>
+		<td>{{ data_over }}</td>
+        <td>{{ crash_interval }}</td>
+        <td>{{ reason }}</td>
+        <td>{{ description }}</td>
+        <td>{{ effect }}</td>
+        <td>{{ effect_in_business }}</td>
+        <td>{{ effect_not_in_business }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

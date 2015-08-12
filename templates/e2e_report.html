@@ -2,27 +2,39 @@
 {% block title %}E2E. Создание отчета. {% endblock %}
 {% block head %}Техподразделение{% endblock %}
 {% block content %}
-    <h3>По месячные отчеты</h3>
+    <h3>По месячные отчеты:</h3>
     <table>
-    <tr>
-
-     <th> &nbsp; </th>
+     <tr>
+    <th> &nbsp; </th>
       {%  for year in year_list %}
           <th>{{ year }}</th>
       {% endfor %}
     </tr>
-    <tr>
+
      {%  for list in state_all %}
-         {% for month, status in list %}
-             <td> {{ month }}</td>
-             <td> {{ status }}</td>
+         <tr>
+         {%  for string in list %}
+             <td> {{string }}</td>
          {% endfor %}
+         </tr>
      {% endfor %}
-    </tr>
-
-
     </table>
- <h3> Status1:
-   {{ status1 }}
+    <h3>Создание отчета:</h3>
 
-{% endblock %}
+    <form action="/e2e/generate_month_report/" method="post">
+        {% csrf_token %}
+        <select name="year">
+            <option disabled> " Выберите год "</option>
+             {%  for year in year_list %}
+            <option  value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+         </select>
+     <select name="month">
+         <option disabled> " Выберите месяц "</option>
+         {%  for key, value in dict_month.items %}
+             <option  value="{{ key }}"> "{{ value }} " </option>
+         {% endfor %}
+     </select>
+    <input type="submit" value="Создать отчет" />
+    </form>
+ {% endblock %}
