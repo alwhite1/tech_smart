@@ -1,0 +1,28 @@
+#summary_report {
+width: 350px;
+height: 150px;
+margin: 0 auto;
+background: lightcyan;
+display: none;
+color: black;
+font-size: 15px;
+text-align: left;
+padding-top: 30px;
+border-radius: 5% ;
+}
+#link_to_report{
+display: block;
+padding: 0 80px;
+background: silver;
+border-radius: 5%;
+color: black;
+margin: 0 auto;
+text-align: center;
+width: 300px;
+
+}
+.deactivated_col{
+
+background-color: lightgray;
+
+}

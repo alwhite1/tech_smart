@@ -1,9 +1,13 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
+from api import CrashReportResource
+
+
+
 
 admin.autodiscover()
-
+report_resource = CrashReportResource()
 urlpatterns = patterns('',
 
                        url(r'^$', 'tech_smart.views.main'),
@@ -15,6 +19,8 @@ urlpatterns = patterns('',
                        url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
                        url(r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login'),
                        url(r'^tinymce/', include('tinymce.urls')),
+                       url(r'^api/', include(report_resource.urls)),
+
 
                        )
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="csrfmiddlewaretoken" content="{{ csrf_token }}">
+    <title>TEST</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css"  href="{% static "style.css" %}" >
+    <script src="{% static "js/vendor/angular.min.js" %}"></script>
+    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+</head>
+<body ng-app="CrashReportApp">
+
+<div ng-controller="CrashReportController">
+   <br>
+    <h1><div ng-bind="bla"> БЛЯ? {{ bla }} </div> </h1>
+    <br>
+    <h1><div ng-bind="meta.limit">  META?</div> </h1>
+    <h1> {{ meta.total_count }}</h1>
+    <h1><div ng-bind="bla1">  ?</div> </h1>
+
+<table>
+    <tr>
+        <th id="crash_code">Номер аварии</th>
+		<th id="date">Дата</th>
+		<th id="date_begin">Дата начала аварии</th>
+		<th id="data_over">Дата устранения аварии</th>
+		<th id="crash_interval">Длительность</th>
+		<th id="reason">Причина аварии</th>
+        <th id="description">Описание аварии</th>
+        <th id="effect ">Влияние на доступность услуг</th>
+        <th id="effect_in_business">Влияние на доступность услуг в бизнес время</th>
+        <th id="effect_not_in_business">Влияние на доступность услуг не в бизнес время</th>
+</tr>
+
+
+<div ng-repeat="singleCrash in objects">
+    <tr>
+        <td><div ng-bind="singleCrash.CRASH_CODE"> {{ singleCrash.CRASH_CODE }}</div></td>
+		<td><div ng-bind="singleCrash.DATE"> {{ singleCrash.DATE }}</div></td>
+		<td><div ng-bind="singleCrash.DATE_BEGIN">{{ singleCrash.DATE_BEGIN}}</div></td>
+		<td><div ng-bind="singleCrash.DATE_OVER">{{ singleCrash.DATE_OVER }}</div></td>
+        <td><div ng-bind="singleCrash.CRASH_INTERVAL">{{ singleCrash.CRASH_INTERVAL }}</div></td>
+        <td><div ng-bind="singleCrash.REASON">{{ singleCrash.REASON }}</div></td>
+        <td><div ng-bind="singleCrash.DESCRIPTION">{{ singleCrash.DESCRIPTION }}</div></td>
+        <td><div ng-bind="singleCrash.EFFECT">{{ singleCrash.EFFECT }}</div></td>
+        <td><div ng-bind="singleCrash.EFFECT_IN_BUSINESS">{{ singleCrash.EFFECT_IN_BUSINESS }}</div></td>
+        <td><div ng-bind="singleCrash.EFFECT_NOT_IN_BUSINESS">{{ singleCrash.EFFECT_NOT_IN_BUSINESS }}</div></td>
+    </tr>
+ </div>
+</table>
+    <div ng-view></div>
+</div>
+
+
+
+
+
+<!-- Modules -->
+ <script src="{% static "js/app.js" %}"></script>
+ <!-- Controllers -->
+ <script src="{% static "js/controllers/CrashReportController.js" %}"></script>
+<!-- Services -->
+ <script src="{% static "js/services/crash.js" %}"></script>
+
+</body>
+</html>

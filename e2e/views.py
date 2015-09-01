@@ -8,6 +8,7 @@ from e2e.models import ReportInformation
 from e2e.e2e import change_time
 from e2e.e2e import time_period
 from  e2e.e2e import get_month_report
+from django.core import serializers
 from django.template import RequestContext
 import datetime
 
@@ -55,9 +56,7 @@ def report(request):
 
 
 def see_post(request):
-    month = request.POST["month"]
-    year = request.POST["year"]
-    return render_to_response('see_post.html', {'month': month, 'year': year},
+    return render_to_response('see_post.html',
                               context_instance=RequestContext(request))
 def test_filter_crash(request):
     MONTH = "6.2015"
@@ -164,8 +163,18 @@ def month_detailed(request, month_year):
     month = month_year.split(".")[0]
     year = month_year.split(".")[1]
     crash_report = CrashReport.objects.filter(MONTH=month_year).order_by('-EFFECT_IN_BUSINESS')
+
     return render_to_response('e2e_month_detailed.html', {'crash_report': crash_report, "dict_month": dict_month,
-                                                          "month": month, "year": year, "month_year":month_year},
+                                                          "month": month, "year": year, "month_year": month_year,
+                                                          },
                               context_instance=RequestContext(request))
+
+def month_json(request, month_year):
+    crash_report = CrashReport.objects.filter(MONTH=month_year).order_by('-EFFECT_IN_BUSINESS')
+    json_report = serializers.serialize('json', crash_report)
+
+    return render_to_response('e2e_month_json_report.html',
+                              {'json_report': json_report}, context_instance=RequestContext(request))
+
 
 

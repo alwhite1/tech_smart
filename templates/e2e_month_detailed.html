@@ -1,38 +1,68 @@
 
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css"  href="{% static "style.css" %}" >
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Crash Report</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css"  href="{% static "bootstrap.min.css" %}" >
+    <link rel="stylesheet" type="text/css"  href="{% static "js.css" %}" >
+    <script type="text/javascript" src="{% static "jquery-latest.js" %}"></script>
+	<script type="text/javascript" src="{% static "jquery.tablesorter.js" %}"></script>
+    <script type="text/javascript" src="{% static "reportGenerate.js" %}"></script>
+
+</head>
+<body>
+<div id="summary_report">
+        <p id="crash_quantity">Количество аврий</p>
+        <p id="summary_effect">Доступность услуг</p>
+        <p id="summary_effect_in_business">Доступность услуг в бизнес время</p>
+        <p id="summary_effect_not_business">Доступность услуг не в бизнес время</p>
+    </div>
+    <a id="link_to_report" href="#">Месячный отчет</a>
+
 {% block content %}
     <br>
     <h1> Подробный отчет за {{ month_year }}:  </h1>
     <br>
     <div id="back"> <p><a href="/e2e/month_report/">"Вернутся к месячным отчетам"</a></p> </div>
     <br>
-<table>
-    <tr>
-        <th>Номер аварии</th>
-		<th>Дата</th>
-		<th>Дата начала аварии</th>
-		<th>Дата устранения аварии</th>
-		<th>Длительность</th>
-		<th>Причина аварии</th>
-        <th>Описание аварии</th>
-        <th>Влияние на доступность услуг</th>
-        <th>Влияние на доступность услуг в бизнес время</th>
-        <th>Влияние на доступность услуг не в бизнес время</th>
-    </tr>
+
+<table id="report_crash" class="table table-hover">
+        <thead>
+        <tr>
+        <th id="crash_code">Номер аварии</th>
+		<th id="date">Дата</th>
+		<th id="date_begin">Дата начала аварии</th>
+		<th id="data_over">Дата устранения аварии</th>
+		<th id="crash_interval">Длительность</th>
+		<th id="reason">Причина аварии</th>
+        <th id="description">Описание аварии</thid>
+        <th id="effect ">Влияние на доступность услуг</th>
+        <th id="effect_in_business">Влияние на доступность услуг в бизнес время</th>
+        <th id="effect_not_in_business">Влияние на доступность услуг не в бизнес время</th>
+        <th id="checkbox"> Использовать для расчета еффективности? </th>
+        </tr>
+        </thead>
+    <tbody>
     {%  for id,crash_code,date,date_begin,data_over,crash_interval,time_in,time_not,reason,description, number, effect, effect_in_business, effect_not_in_business, month in crash_report.values_list %}
-    <tr>
+    <tr class="current_crash{{ forloop.counter }}">
         <td>{{ crash_code }}</td>
-		<td>{{ date }}</td>
+		<td id="date"> {{ date }}</td>
 		<td>{{ date_begin }}</td>
 		<td>{{ data_over }}</td>
         <td>{{ crash_interval }}</td>
         <td>{{ reason }}</td>
         <td>{{ description }}</td>
-        <td>{{ effect }}</td>
-        <td>{{ effect_in_business }}</td>
-        <td>{{ effect_not_in_business }}</td>
+        <td class="effect_col" id="effect{{ forloop.counter }}">{{ effect }}</td>
+        <td class="effect_in_business_col" id="effect_in_business{{ forloop.counter }}">{{ effect_in_business }}</td>
+        <td class="effect_not_in_business_col" id="effect_not_in_business{{ forloop.counter }}">{{ effect_not_in_business }}</td>
+        <td> <input type="checkbox" id="checkbox{{ forloop.counter }}" class="checkbox_status" checked> <a id="checkbox{{ forloop.counter }}text"></a></td>
     </tr>
     {% endfor %}
+    </tbody>
 </table>
 {% endblock %}
+
+</body>
+</html>

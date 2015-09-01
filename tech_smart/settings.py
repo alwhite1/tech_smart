@@ -27,8 +27,9 @@ INSTALLED_APPS = (
     'tinymce',
     'stp',
     'to',
-    'e2e'
-    )
+    'e2e',
+    'tastypie',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
