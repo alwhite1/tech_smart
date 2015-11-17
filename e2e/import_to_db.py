@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 import MySQLdb
-raw = [x.split(";") for x in open("/home/alexandr/E2E/2015_6_crashes.csv")]
+raw = [x.split(";") for x in open("/home/alexandr/E2E/2015_4_crashes.csv")]
 rmp = {}
 db = MySQLdb.connect(host="localhost", user="root", passwd="admin", db="django_tech_smart", charset='utf8')
 cursor = db.cursor()
-MONTH = "6.2015"
-for CRASH_CODE, NODE_CODE, DISTRICT, S_ATV, S_VPTV, S_VBB, S_VBB_ETH, DATE_REPORT, DATE_BEGIN, DATE_OVER, CINTERVAL, CRASH_REASON, CRASH_DESCR, CITY, HOUSE, HOUSE_ID, SYSUSER, Q_ABON_SERV_ATV, Q_ABON_SERV_DTV, Q_ABON_SERV_VBB, Q_ABON_SERV_ETH, Q_ABON_SERV_OTT, Q_ABON, COUNT_FLAT, TREATMENTS, DEPARTMENT, DATE_REG, DATE_OVEROPER, TITLE_, STARTDATE, ENDDATE, SDINTERVAL in raw:
+MONTH = "4.2015"
+for CRASH_CODE, NODE_CODE, DISTRICT, S_ATV, S_VPTV, S_VBB, S_VBB_ETH, DATE_REPORT, DATE_BEGIN, DATE_OVER, CINTERVAL, CRASH_REASON, CRASH_DESCR, CITY, HOUSE, HOUSE_ID, SYSUSER, Q_ABON_SERV_ATV, Q_ABON_SERV_DTV, Q_ABON_SERV_VBB, Q_ABON_SERV_ETH, Q_ABON_SERV_OTT, Q_ABON, COUNT_FLAT, TREATMENTS, DEPARTMENT, DATE_REG, DATE_OVEROPER, TITLE_ in raw:
     CITY = CITY.decode('cp1251').encode('utf8')
     if CITY == "\"Вінниця\"":
         CRASH_CODE = "".join(CRASH_CODE.split("\"")[0:-1])

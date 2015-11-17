@@ -11,9 +11,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = '^q^ttcr2znw8*-s5mwmzc(j#@rf^wk^&@y5sqc*il_+t07ota6'
 
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -47,10 +47,10 @@ WSGI_APPLICATION = 'tech_smart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_tech_smart',
-        'USER': 'root',
-        'PASSWORD': 'admin',
-        'HOST': '',
+        'NAME': 'tech_smart',
+        'USER': 'tech',
+        'PASSWORD': 'askldh1D21498',
+        'HOST': 'localhost',
     }
 }
 
